@@ -6,7 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %} - Le Blog de Batman</title>
-
+    {# Inclusion Font Awesome #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    {# Inclusion CSS Bootstrap #}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    {# Inclusion Styles perso #}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     {# Bloc pour ajouter des fichiers CSS additionnels #}
     {% block css %}{% endblock %}
 </head>
@@ -15,6 +20,9 @@
     {# Bloc pour afficher le contenu des pages #}
     {% block body %}{% endblock %}
 
+
+    {# Inclusion JS Bootstrap #}
+    <link rel="stylesheet" href="{{ asset('js/bootstrap.bundle.min.js') }}">
     {# Bloc pour afficher des fichiers JS additionnels #}
     {% block js %}{% endblock %}
 </body>
