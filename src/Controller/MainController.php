@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     *  contrôleur de la page d'accueil
+     *  Contrôleur de la page d'accueil
      */
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'main_home')]
     public function index(): Response
     {
 
