@@ -22,12 +22,14 @@
     {# Inclusion du menu principal du site #}
     {% include 'partials/_main_navbar.html.twig' %}
 
+    {# Inclusion de l'affichage des messages flashes de type "success" et "error" #}
+    {% include 'partials/_flashes.html.twig' %}
+
     {# Bloc pour afficher le contenu des pages #}
     {% block body %}{% endblock %}
 
-
     {# Inclusion JS Bootstrap #}
-    <link rel="stylesheet" href="{{ asset('js/bootstrap.bundle.min.js') }}">
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}">
     {# Bloc pour afficher des fichiers JS additionnels #}
     {% block js %}{% endblock %}
 </body>
