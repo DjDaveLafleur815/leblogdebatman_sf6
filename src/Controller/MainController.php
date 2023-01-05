@@ -12,10 +12,21 @@ class MainController extends AbstractController
      *  Contrôleur de la page d'accueil
      */
     #[Route('/', name: 'main_home')]
-    public function index(): Response
+    public function home(): Response
+    {
+    return $this->render('main/home.html.twig',);
+    }
+
+    /**
+     *  Contrôleur de la page de profil
+     *
+     * Accès réservé aux connectés (ROLE_USER)
+     */
+    #[Route('/mon-profil/', name: 'main_profile')]
+    #[IsGranted('ROLE_USER')]
+    public function profile(): Response
     {
 
-    return $this->render('main/home.html.twig',);
-
+        return $this->render('main/profile.html.twig',);
     }
 }
