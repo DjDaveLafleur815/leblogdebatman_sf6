@@ -7,6 +7,11 @@
 {# Contenu de la page #}
 {% block body %}
 
+    {# Affichage de tous les flash messages de type "success" #}
+    {% for message in app.flashes('success') %}
+        <div style="color:green;">{{ message }}</div>
+    {% endfor %}
+
     {# Grille Bootstrap #}
     <div class="container-fluid">
 

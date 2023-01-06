@@ -54,7 +54,9 @@
                                     }}</span></li>
                             <li class="list-group-item bg-black text-white">
                                 Compte :
-                                <span class="text-info">xxxxxxxxxxxxx</span>
+                                <span class="text-info">{{ is_granted('ROLE_ADMIN') ?
+                                    'Administrateur' : 'Utilisateur'
+                                    }}</span>
                             </li>
                         </ul>
 
