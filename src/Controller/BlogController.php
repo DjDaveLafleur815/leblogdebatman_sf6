@@ -19,50 +19,46 @@ class BlogController extends AbstractController
 
 {
     /**
-     *  Contrôleur de la page permettant de créer un nouvel article
+     * Contrôleur de la page permettant de créer un nouvel article
      */
     #[Route('/nouvelle-publication/', name: 'new_publication')]
     #[IsGranted('ROLE_ADMIN')]
     public function newPublication(Request $request, ManagerRegistry $doctrine): Response
     {
-        // Création d'un nouvel objet de la classe Article, vide pour le moment
+
+        // Création d'un nouvel article vide
         $newArticle = new Article();
 
-        // Création d'un nouveau formulaire à partir de notre formulaire NewPublicationFormType et de notre nouvel
-        // article
+        // Création d'un formulaire de création d'article, lié à l'article vide
         $form = $this->createForm(NewPublicationFormType::class, $newArticle);
 
-        // Symfony va remplir $newArticle grâce aux données du formulaire envoyé (accessibles dans l'objet $request, c'est pour ça qu'on doit lui donner)
+        // Liaison des données POST aux formulaires
         $form->handleRequest($request);
 
-        // Pour savoir si le formulaire a été envoyé, on a accès à cette condition :
-        if($form->isSubmitted() && $form->isValid() ){
+        // Si le formulaire a bien été envoyé et sans erreurs
+        if($form->isSubmitted() && $form->isValid()){
 
+
+            // Hydrater l'article
             $newArticle
-                ->setPublicationDate(new \DateTime())
-                ->setAuthor( $this->getUser() )
+                ->setPublicationDate( new \DateTime() )     // Date actuelle
+                ->setAuthor( $this->getUser() )       // Auteur de l'article (la personne actuellement connectée)
             ;
 
-            dump($newArticle);
-
-            // récupération du manager des entités et sauvegarde en BDD de $newArticle
+            // Sauvegarde de l'article en BDD
             $em = $doctrine->getManager();
-
-            $em->persist($newArticle);
-
+            $em->persist( $newArticle );
             $em->flush();
 
-            // Création d'un flash message de type "success"
-            $this->addFlash('success', 'Article créé avec succès !');
+            // Message de succès
+            $this->addFlash('success', 'Article publié avec succès !');
 
-            // Redirection de l'utilisateur sur la route "home" (la page d'accueil)
-            return $this->redirectToRoute('main_home');
-
+            // TODO: pensez à faire une redirection sur la page d'affichage de l'article
 
         }
 
         return $this->render('blog/new_publication.html.twig', [
-            'newArticleForm' => $form->createView(),
+            'new_publication_form' => $form->createView(),
         ]);
     }
 }
