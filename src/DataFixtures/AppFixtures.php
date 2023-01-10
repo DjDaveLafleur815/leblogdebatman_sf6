@@ -33,10 +33,10 @@ class AppFixtures extends Fixture
         $admin
             ->setEmail('a@a.a')
             ->setRegistrationDate( $faker->dateTimeBetween('-1 year', 'now') )
-            ->setPseudonym('Batman')
+            ->setPseudonym('DaveLafleur')
             ->setRoles(["ROLE_ADMIN"])
             ->setPassword(
-                $this->encoder->hashPassword($admin, 'Abcdefu2!')
+                $this->encoder->hashPassword($admin, 'Azertydu21!')
             )
         ;
 
