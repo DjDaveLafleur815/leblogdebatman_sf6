@@ -95,5 +95,4 @@ class BlogController extends AbstractController
             'article' => $article,
         ]);
     }
-
 }
