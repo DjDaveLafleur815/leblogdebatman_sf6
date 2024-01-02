@@ -11,7 +11,7 @@ git clone https://github.com/DjDaveLafleur815/leblogdebatman_sf6.git
 ### Déplacer le terminal dans le dossier cloné
 
 ```
-cd leblogdebatman
+cd leblogdebatman_sf6
 ```
 
 ### Taper les commandes suivantes
