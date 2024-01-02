@@ -5,7 +5,7 @@
 ### Cloner le projet
 
 ``` 
-git clone https://github.com/DjDaveLafleur815/leblogdebatman.git
+git clone https://github.com/DjDaveLafleur815/leblogdebatman_sf6.git
 ```
 
 ### Déplacer le terminal dans le dossier cloné
@@ -18,4 +18,7 @@ cd leblogdebatman
 
 ```
 composer install
+symfony console doctrine:database:create
+symfony console make:migration
+symfony console doctrine:migration:migrate
 ```
